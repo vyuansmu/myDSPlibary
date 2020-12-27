@@ -28,23 +28,34 @@ int main()
     } cout << endl;
     
     //~~~~~~~~~~~~~~~~ now implement Convolution~~~~~~~~~~~~ dont worry about OOP for now
-    int n = length + length - 1; //length of convolution, update length later to work dynamicly 
-    //https://stackoverflow.com/questions/24518989/how-to-perform-1-dimensional-valid-convolution
-    //review recursion tommorrow 
+    int i,j,k,temp;
+    int lengthA = length;
+    int lengthB = length;
+    int n = lengthA + lengthB - 1; //length of convolution, update length later to work dynamicly 
+    int* z = new int[n]; //using new to dynamiclly allocate n-amt * int memory for my z array malloc in C
+    
+    for (k = 0; k < n; k++) { // loop that will loop through the values of z from 0 to n
+        i = k; //tempoary counter since I need to do arithmatic on the counter but dont want to interupt the 
+               // main counter which is k
+        temp = 0; //temp is a temporary register to hold and accumulate A*B pairs
+        for (j = 0; j < lengthB; j++) { //this loop calculates each sum
+            if (i >= 0 && i < lengthA) {
+                //this condition checks to make sure only a limited set of numbers are calculated
+                temp = temp + (seqA[i] * seqB[j]); //accumulate
+            }
 
+            i = i - 1; //the position of this decremental counter is important for the first z element to pass
+        }
+        z[k] = temp;//once the second for loop exists, the tempoary i counter is no longer needed 
+                    //and you can once again resume using k to store the temp value into z-array
+                    //once it loops back the i-counter will be reset with a new value of k
+                    //and the temp register will also be reset back to 0 to accumulate data once again
+    }
+    cout << "The convolution result is " << n << " units long. The sequence is:\n";
+    for (int i = 0; i < n; i++) {
+        cout << z[i]<< " ";
+     }
 
     
-
-
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
