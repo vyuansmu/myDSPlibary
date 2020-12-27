@@ -1,0 +1,2 @@
+C:\Users\victo\Documents\ee\C++ with DSP\myDSPlibary\Convolution\Convolution of two sequences\Debug\Convolution of two sequences.exe
+C:\Users\victo\Documents\ee\C++ with DSP\myDSPlibary\Convolution\Convolution of two sequences\Debug\Convolution of two sequences.pdb
